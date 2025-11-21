@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Лабораторна робота №1</title>
+</head>
+<body>
+
+<h3>Завдання 1</h3>
+<p>Це звичайний HTML абзац.</p>
+
+<script>
+function showBirth() {
+  alert('Я народилась 31.01.2007 року в місті Косів');
+}
+document.write("Привіт! Мене звати Тимощук Богдана Русланівна, студентка групи ІПЗ-24.");
+</script>
+
+<p>Знову звичайний HTML абзац.</p>
+<input type="button" value="Тиць" onClick="showBirth()">
+
+<hr>
+
+<h3>Завдання 2</h3>
+
+<img src="formula.png" alt="Математична формула">
+<script>
+function calculation() {
+  let x = 2;
+  let y = 5;
+  let z = 3;
+  let F = Math.pow(x, 6) + Math.pow(x, 5) * y + 0.5 * z + Math.pow(x, 2);
+  alert(F);
+}
+</script>
+
+<input type="button" value="Calculate" onClick="calculation()">
+
+<hr>
+
+<h3>Завдання 3</h3>
+
+<script>
+function showMessage(msg) {
+  document.getElementById("t_res").value = msg;
+}
+</script>
+
+<form id="form3">
+  <input type="text" size="70" 
+         value="Натисни на поле або виділи текст"
+         onFocus="showMessage('Подія onFocus: перше поле отримало фокус')"
+         onSelect="showMessage('Подія onSelect: виділено текст у першому полі')">
+  <br><br>
+
+  <p>Поле для виводу:</p>
+  <input type="text" size="70" id="t_res" readonly>
+</form>
+
+<hr>
+
+<h3>Завдання 4</h3>
+
+<script>
+function calculateF() {
+  let x = parseFloat(document.getElementById("t_x").value);
+  let y = parseFloat(document.getElementById("t_y").value);
+  let F;
+
+  if (x > 0) {
+    F = 3 * x * y;
+  } else if (x < 0 && y > 1.5) {
+    F = (2 * x) / y;
+  } else {
+    F = Math.pow(x, 2) + Math.pow(y, 3);
+  }
+
+  document.getElementById("t_F").value = F;
+}
+</script>
+
+x: <input type="text" id="t_x" value="1"><br><br>
+y: <input type="text" id="t_y" value="2"><br><br>
+<input type="button" value="Розрахувати" onClick="calculateF()">
+F: <input type="text" id="t_F" readonly><br><br>
+
+<hr>
+
+<h3>Завдання 5</h3>
+
+<script>
+function calculateSum() {
+  let x = parseFloat(document.getElementById("t_x5").value);
+  let y = parseFloat(document.getElementById("t_y5").value);
+  let sum = 0;
+
+  for (let i = 3; i <= 5; i++) {
+    let factorial = 1;
+    for (let j = 1; j <= i; j++) factorial *= j;
+    let term = Math.pow(-1, i)
+               * ((2 * x * y - Math.pow(x, 2)) / (i + 2))
+               * factorial;
+    sum += term;
+  }
+
+  document.getElementById("t_result5").value = sum;
+}
+</script>
+
+x: <input type="text" id="t_x5" value="2"><br><br>
+y: <input type="text" id="t_y5" value="3"><br><br>
+Результат: <input type="text" id="t_result5" readonly><br><br>
+<input type="button" value="Розрахувати" onClick="calculateSum()">
+
+<hr>
+
+<a href="1_6_7.html">Завдання 6, 7</a>
+</body>
+</html>
