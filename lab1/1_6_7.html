@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Завдання 6, 7</title>
+</head>
+<body>
+
+<h3>Завдання 6</h3>
+
+<input type="text" id="name_product6" placeholder="Введіть товар"><br><br>
+<input type="button" value="Наявність і ціна" onClick="fun1()"><br><br>
+
+<input type="text" id="q6" size="50" readonly><br>
+<input type="text" id="c6" size="50" readonly><br><br>
+
+<input type="button" value="Загальна сума" onClick="fun2_6()"><br><br>
+<div id="sum6"></div>
+
+<script>
+
+let products6 = ["Торт", "Тарілка", "Термос", "Тістечко"];
+let quantity6 = [20, 35, 15, 40];
+let cost6 = [200, 120, 350, 60];
+
+let index6 = -1;
+
+function fun1() {
+  let name = document.getElementById("name_product6").value.trim().toLowerCase();
+  index6 = -1;
+
+  for (let i = 0; i < products6.length; i++) {
+    if (products6[i].toLowerCase() === name) {
+      index6 = i;
+      document.getElementById("q6").value =
+        "Кількість: " + quantity6[i];
+      document.getElementById("c6").value =
+        "Ціна: " + cost6[i] + " грн";
+      return;
+    }
+  }
+
+  document.getElementById("q6").value = "Товар не знайдено!";
+  document.getElementById("c6").value = "";
+}
+
+function fun2_6() {
+  if (index6 === -1) {
+    alert("Спочатку знайдіть товар!");
+    return;
+  }
+  let total = quantity6[index6] * cost6[index6];
+  document.getElementById("sum6").innerHTML =
+    "Загальна сума: " + total + " грн";
+}
+</script>
+
+<hr>
+
+<h3>Завдання 7</h3>
+
+Виберіть товар:<br>
+<select id="sel_product" onChange="findProduct()">
+  <option>Торт</option>
+  <option>Тарілка</option>
+  <option>Термос</option>
+  <option>Тістечко</option>
+</select><br><br>
+
+<input type="text" size="50" id="output_quantity" readonly><br>
+<input type="text" size="50" id="output_cost" readonly><br><br>
+
+<input type="button" value="Загальна сума" onClick="fun2()"><br><br>
+<div id="total_sum"></div>
+
+<script>
+  
+let products = ["Торт", "Тарілка", "Термос", "Тістечко"];
+let quantity = [20, 35, 15, 40];
+let cost = [200, 120, 350, 60];
+
+let selectedIndex = -1;
+
+function findProduct() {
+  selectedIndex = document.getElementById("sel_product").selectedIndex;
+
+  document.getElementById("output_quantity").value =
+    "Кількість: " + quantity[selectedIndex];
+
+  document.getElementById("output_cost").value =
+    "Ціна: " + cost[selectedIndex] + " грн";
+}
+
+function fun2() {
+  if (selectedIndex === -1) {
+    alert("Спочатку виберіть товар!");
+    return;
+  }
+  let total = quantity[selectedIndex] * cost[selectedIndex];
+  document.getElementById("total_sum").innerHTML =
+    "Загальна сума: " + total + " грн";
+}
+</script>
+
+</body>
+</html>
